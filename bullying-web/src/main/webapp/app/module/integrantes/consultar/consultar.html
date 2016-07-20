@@ -1,0 +1,95 @@
+<h3>Integrantes</h3>
+<table class="table">
+    <thead>
+        <tr ng-show = "!consultarIntegranteCtr.filtrar">
+            <th>
+                #
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Teléfono
+            </th>
+            <th>
+                Ciudad
+            </th>
+            <th>
+                Dirección
+            </th>
+            <th>
+                Cumpleaños
+            </th>
+            <th>
+              <button class="btn btn-default btn-xs btn-filter" ng-click = "consultarIntegranteCtr.cambiarFiltro()">
+                  <span class="glyphicon glyphicon-filter"></span>
+                Filtrar
+              </button>
+            </th>
+        </tr>
+
+        <tr ng-show = "consultarIntegranteCtr.filtrar">
+            <th>
+
+            </th>
+            <th>
+                <input type="text" class="form-control" placeholder="Nombre" ng-model = "consultarIntegranteCtr.filtro.nombre">
+            </th>
+            <th>
+                <input type="text" class="form-control" placeholder="Teléfono" ng-model = "consultarIntegranteCtr.filtro.telefono">
+            </th>
+            <th>
+                <input type="text" class="form-control" placeholder="Ciudad" ng-model = "consultarIntegranteCtr.filtro.ciudad">
+            </th>
+            <th>
+                <input type="text" class="form-control" placeholder="Dirección" ng-model = "consultarIntegranteCtr.filtro.direccion">
+            </th>
+            <th>
+                Cumpleaños
+                <!-- <input type="text" class="form-control" placeholder="Cumpleaños" ng-model = "consultarIntegranteCtr.filtro.fechaCumpleanhos"> -->
+            </th>
+            <th>
+              <button class="btn btn-default btn-xs btn-filter" ng-click = "consultarIntegranteCtr.cambiarFiltro()">
+                  <span class="glyphicon glyphicon-filter"></span>
+                Filtrar
+              </button>
+            </th>
+        </tr>
+
+    </thead>
+    <tr dir-paginate="integrante in consultarIntegranteCtr.integrantes | filter:consultarIntegranteCtr.filtro:strict | itemsPerPage:10" pagination-id="consultaIntegrantes" current-page="consultarIntegranteCtr.currentPage">
+        <td>
+            {{(consultarIntegranteCtr.currentPage -1) * 10 + $index + 1}}
+        </td>
+        <td class="text-muted">
+            {{integrante.nombre + ' ' + integrante.apellidos}}
+        </td>
+        <td class="text-muted">
+            {{integrante.telefono}}
+        </td>
+        <td class="text-muted">
+            {{integrante.ciudad}}
+        </td>
+        <td class="text-muted">
+            {{integrante.direccion}}
+        </td>
+        <td class="text-muted">
+            {{integrante.fechaCumpleanhos | date : 'dd-MM-yyyy'}}
+        </td>
+        <td>
+            <button type="button" class="btn btn-default btn-sm" title="Ver" data-toggle="tooltip" ng-click="consultarIntegranteCtr.seleccionarIntegrante(integrante)">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+            <button type="button" class="btn btn-default btn-sm" title="Eliminar" data-toggle="tooltip" ng-click="consultarIntegranteCtr.eliminarIntegrante(event, integrante)">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </td>
+
+    </tr>
+</table>
+
+<div class="row">
+    <div class="col-md-12">
+        <dir-pagination-controls boundary-links="true" direction-links="true" max-size="5" pagination-id="consultaIntegrantes"></dir-pagination-controls>
+    </div>
+</div>

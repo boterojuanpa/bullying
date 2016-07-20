@@ -1,0 +1,63 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'jacoco'
+
+
+sourceCompatibility=1.7
+targetCompatibility=1.7
+
+
+webAppDirName = "src/main/webapp"
+
+dependencies{
+	
+	compile project.ext.spring 
+	compile (project.ext.jersey){
+		exclude group: "org.springframework"
+	}
+	compile project.ext.jersey_json
+	compile project.ext.varios
+	compile project.ext.javaee
+	
+	compile group: 'org.apache.derby', name: 'derbyclient', version: '10.12.1.1'
+	
+}
+
+war{
+	archiveName 'bullying.war'
+	exclude ("**/node_modules/**")
+}
+
+task copyToLib(type: Copy) {
+    into "$buildDir/output/lib"
+    from configurations.runtime
+}
+
+eclipse {
+	jdt{
+		sourceCompatibility=1.7
+		targetCompatibility=1.7
+	}
+
+	project {
+		name = 'bullying-web'
+        buildCommand 'com.google.gdt.eclipse.core.webAppProjectValidator'
+	}
+
+	wtp {
+		facet {
+			facet name:'java', version:'1.7'
+			facet name:'jst.web', version:'2.5'
+		}
+	}
+
+}
+
+test {
+		jacoco {
+			append = true
+			destinationFile = file("../bullying/build/jacoco/jacocoTest.exec")
+		}
+		reports.junitXml.destination =  file("../bullying/build/test-results")
+	}

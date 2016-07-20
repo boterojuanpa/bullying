@@ -1,0 +1,44 @@
+allprojects {
+
+	
+	repositories {
+		mavenCentral()
+	}	
+	
+	project.ext.spring_version = '3.2.14.RELEASE' //'4.2.0.RELEASE'
+	project.ext.jersey_version = '1.18.1' //'4.2.0.RELEASE'
+	project.ext.jersey_version = '1.18.1' //'4.2.0.RELEASE'
+
+
+	project.ext.spring = [
+		'org.springframework:spring-orm:' + project.ext.spring_version,
+		'org.springframework:spring-jdbc:' + project.ext.spring_version,
+		'org.springframework:spring-tx:' + project.ext.spring_version,
+		'org.springframework:spring-web:' + project.ext.spring_version,
+		
+		'org.springframework.security:spring-security-web:3.2.3.RELEASE',
+		'org.springframework.security:spring-security-config:3.2.3.RELEASE',
+		'org.springframework:spring-test:'+ project.ext.spring_version
+	]
+	
+	project.ext.jersey = [
+		'com.sun.jersey.contribs:jersey-spring:' + project.ext.jersey_version
+	]
+	
+	project.ext.jersey_json = [
+		'com.sun.jersey:jersey-json:' + project.ext.jersey_version
+	]
+	
+	project.ext.varios = [
+		'org.hsqldb:hsqldb:2.3.2',
+		'org.hibernate:hibernate-entitymanager:4.3.5.Final',
+		'commons-dbcp:commons-dbcp:1.4',
+		'org.slf4j:slf4j-log4j12:1.7.7',
+		'junit:junit:4.11'
+	]
+	
+	project.ext.javaee = [
+		'javax.servlet:servlet-api:2.5'
+	]
+
+}

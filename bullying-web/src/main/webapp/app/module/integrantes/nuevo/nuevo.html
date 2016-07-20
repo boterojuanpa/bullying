@@ -1,0 +1,97 @@
+<h3>Formulario integrantes</h3>
+<form name="formIntegrante" novalidate>
+    <div class="form-group">
+        <label for="fecha">Fecha de ingreso:</label>
+        <md-datepicker ng-model="nuevoIntegranteCtr.integrante.fecha" md-placeholder="Seleccione"></md-datepicker>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Nombres</label>
+                <input ng-model="nuevoIntegranteCtr.integrante.nombre" name="nombre" required>
+                <div ng-messages="formIntegrante.nombre.$error" role="alert">
+                    <div ng-message-exp="['required']">
+                        El nombre es requerido
+                    </div>
+                </div>
+            </md-input-container>
+        </div>
+        <div class="col-sm-6">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Apellidos</label>
+                 <!-- <md-icon md-svg-icon="alarm"         style="color: #0F0;"                        aria-label="Alarm Icon"></md-icon> -->
+                <input ng-model="nuevoIntegranteCtr.integrante.apellidos" name="apellidos" required>
+                <div ng-messages="formIntegrante.apellidos.$error" role="alert">
+                    <div ng-message-exp="['required']">
+                        Apellidos son requeridos
+                    </div>
+                </div>
+            </md-input-container>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Teléfono</label>
+                    <input ng-model="nuevoIntegranteCtr.integrante.telefono">
+                </md-input-container>
+            </div>
+            <div class="col-sm-4">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Ciudad</label>
+                    <input ng-model="nuevoIntegranteCtr.integrante.ciudad">
+                </md-input-container>
+            </div>
+            <div class="col-sm-4">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Dirección</label>
+                    <input ng-model="nuevoIntegranteCtr.integrante.direccion">
+                </md-input-container>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <label>Cumpleaños</label>
+                <md-datepicker ng-model="nuevoIntegranteCtr.integrante.fechaCumpleanhos" md-placeholder="Seleccione"></md-datepicker>
+            </div>
+            <div class="col-sm-4">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Sexo</label>
+                    <md-select name="sexo" ng-model="nuevoIntegranteCtr.integrante.sexo" required>
+                        <md-option  value="M">Masculino</md-option>
+                        <md-option value="F">Femenino</md-option>
+                    </md-select>
+                    <div ng-messages="formIntegrante.sexo.$error" role="alert">
+                        <div ng-message-exp="['required']">
+                            Sexo es requerido
+                        </div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div class="col-sm-4">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Email</label>
+                    <input ng-model="nuevoIntegranteCtr.integrante.email" minlength="10" maxlength="200" ng-pattern="/^.+@.+\..+$/" type="email" name="email"></input>
+                    <div ng-messages="formIntegrante.email.$error" role="alert">
+                        <div ng-message-exp="['minlength', 'maxlength', 'pattern']">
+                            El Email debe tener como mínimo 10 caracteres, ejemplo: prueba@gmail.com
+                        </div>
+                    </div>
+                </md-input-container>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Invitado por</label>
+                    <input ng-model="nuevoIntegranteCtr.integrante.invitadoPor">
+                </md-input-container>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" ng-click="nuevoIntegranteCtr.guardarIntegrante()">Guardar Integrante</button>
+</form>

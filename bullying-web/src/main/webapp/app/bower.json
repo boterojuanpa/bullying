@@ -1,0 +1,28 @@
+{
+  "name": "EstandarAngular",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-route": "1.4.x",
+    "angular-resource": "1.4.x",
+    "bootstrap": "~3.3.5",
+    "angular-bootstrap": "~0.14.2",
+    "angularUtils-pagination": "angular-utils-pagination#~0.9.1",
+    "angular-ui-date": "~0.0.8",
+    "angular-ui-notification": "~0.0.14",
+    "angular-ui-router": "~0.2.15",
+    "angular-breadcrumb": "~0.4.1",
+    "angular-ui-tinymce": "latest",
+    "angular-material": "^1.0.8",
+    "angular-messages": "^1.5.5",
+    "angular-moment": "^0.10.3",
+    "moment": "^2.13.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.4.x"
+  },
+  "resolutions": {
+    "angular": "1.4.x",
+    "moment": ">=2.8.0 <2.11.0"
+  }
+}
